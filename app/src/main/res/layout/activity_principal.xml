@@ -6,4 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".PrincipalActivity">
 
+    <TextView
+        android:id="@+id/tvUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Bienvenido usuario!"
+        android:textSize="30dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Balance: 0.0"
+        android:textSize="30dp"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="101dp" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/cheems" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SaveMyMoney"
+        android:textSize="30dp"
+        tools:layout_editor_absoluteX="113dp"
+        tools:layout_editor_absoluteY="605dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

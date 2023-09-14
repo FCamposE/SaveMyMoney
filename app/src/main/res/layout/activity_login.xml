@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <TextView
         android:id="@+id/textViewTitulo"
@@ -55,7 +55,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/textViewContraseña"
         app:layout_constraintTop_toTopOf="@+id/textViewContraseña"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"
+        android:inputType="textPassword"/>
 
     <Button
         android:id="@+id/btnIniciarSesion"

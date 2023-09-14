@@ -8,7 +8,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.proyecto.android.savemymoney.modelo.Usuario
 
-class MainActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     private lateinit var etUsuario: EditText
     private lateinit var etPass: EditText
@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
     private var listado: ArrayList<Usuario> = arrayListOf<Usuario>()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
 
         /*if(listado == null){
             Toast.makeText(this, "Lista vacia", Toast.LENGTH_SHORT).show()
@@ -40,18 +40,23 @@ class MainActivity : AppCompatActivity() {
         this.btnIniciarSesion = findViewById(R.id.btnIniciarSesion)
 
         btnCrearCuenta.setOnClickListener {
-            val intent = Intent(this@MainActivity, CuentaActivity::class.java)
+            val intent = Intent(this@LoginActivity, RegistroActivity::class.java)
             startActivity(intent)
         }
 
         btnIniciarSesion.setOnClickListener{
+
+            //val listaUsuarios: ArrayList<Usuario> = arrayListOf()
             this.usu = etUsuario.text.toString()
             this.pass = etPass.text.toString()
             
             for (usuario: Usuario in listado){
                 if (usuario.dni == this.usu && usuario.pass == this.pass){
                     Toast.makeText(this, "Datos correctos, ingresar", Toast.LENGTH_SHORT).show()
-                    val intent = Intent(this@MainActivity, PrincipalActivity::class.java)
+                    //listaUsuarios.add(usuario)
+                    val intent = Intent(this@LoginActivity, PrincipalActivity::class.java)
+                    //intent.putParcelableArrayListExtra("listado", listaUsuarios)
+                    intent.putExtra("usuario", usuario)
                     startActivity(intent)
                 }else{
                     Toast.makeText(this, "Datos incorectos", Toast.LENGTH_SHORT).show()
