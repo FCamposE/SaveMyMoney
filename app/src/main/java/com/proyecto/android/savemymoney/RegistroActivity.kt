@@ -35,7 +35,7 @@ class RegistroActivity : AppCompatActivity() {
         this.etCorreo = findViewById(R.id.etCorreo)
         this.etPass = findViewById(R.id.etContraseña)
         this.btnCrearCuenta = findViewById(R.id.btnCrearCuenta)
-        this.btnRegresar = findViewById(R.id.btnRegresar)
+        //this.btnRegresar = findViewById(R.id.btnRegresar)
 
         //OBTENER DATOS, GUARDAR USUARIO E IR A MAIN
         btnCrearCuenta.setOnClickListener {
@@ -54,9 +54,9 @@ class RegistroActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        btnRegresar.setOnClickListener {
+        /*btnRegresar.setOnClickListener {
             val  intent = Intent(this@RegistroActivity, LoginActivity::class.java)
             startActivity(intent)
-        }
+        }*/
     }
 }

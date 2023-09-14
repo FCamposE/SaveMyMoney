@@ -21,23 +21,67 @@
         android:id="@+id/tvBalance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Balance: 0.0"
+        android:text="Balance: S/. 2,853.60"
         android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/tvUsuario"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp" />
 
-    <ImageView
-        android:id="@+id/imageViewCenter"
+    <TextView
+        android:id="@+id/tvGastos"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/cheems"
+        android:text="Balance: S/. 500"
+        android:textSize="20sp"
         app:layout_constraintTop_toBottomOf="@+id/tvBalance"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/tvReporte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reporte de Gastos"
+        android:textSize="20sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvGastos"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/tvRG1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comida(35%)| Transporte(30%)"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvReporte"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/tvRG2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ropa(18%)| Diversion(17%)"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@+id/tvRG1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <ImageView
+        android:id="@+id/imageViewCenter"
+        android:layout_width="280dp"
+        android:layout_height="250sp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/floopa"
         app:layout_constraintBottom_toTopOf="@+id/tvLogo"
-        android:layout_marginTop="5dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvBalance" />
 
     <TextView
         android:id="@+id/tvLogo"

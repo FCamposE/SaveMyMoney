@@ -1,140 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="50sp"
     tools:context=".RegistroActivity">
 
     <TextView
-        android:id="@+id/textViewTitulo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Crear Cuenta"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="16dp" />
-
-    <TextView
-        android:id="@+id/tvDNI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="160dp"
-        android:text="DNI:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitulo" />
-
+        android:gravity="center"
+        android:layout_marginBottom="30sp"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:src="@drawable/cheems"
+        android:adjustViewBounds="true"
+        android:layout_marginBottom="30sp"
+        android:scaleType="centerInside" />
     <EditText
         android:id="@+id/etDNI"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese su DNI"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvDNI"
-        app:layout_constraintTop_toTopOf="@+id/tvDNI"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:id="@+id/tvNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Nombre:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDNI"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
-
+        android:hint="DNI"
+        android:inputType="text"
+        android:layout_marginBottom="12sp"/>
     <EditText
         android:id="@+id/etNombre"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese su Nombre"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvNombre"
-        app:layout_constraintTop_toTopOf="@+id/tvNombre"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:id="@+id/tvApellido"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Apellido:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etNombre"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
-
+        android:hint="Nombre"
+        android:inputType="text"
+        android:layout_marginBottom="12sp"/>
     <EditText
         android:id="@+id/etApellidos"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese su Apellido"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvApellido"
-        app:layout_constraintTop_toTopOf="@+id/tvApellido"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:id="@+id/tvCorreo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Correo Electrónico:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etApellidos"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
-
+        android:hint="Apellidos"
+        android:inputType="text"
+        android:layout_marginBottom="12sp"/>
     <EditText
         android:id="@+id/etCorreo"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese su Correo Electrónico"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvCorreo"
-        app:layout_constraintTop_toTopOf="@+id/tvCorreo"
-        android:layout_marginTop="8dp" />
-
-    <TextView
-        android:id="@+id/tvContraseña"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Contraseña:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCorreo"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp" />
-
+        android:hint="Correo"
+        android:inputType="text"
+        android:layout_marginBottom="12sp"/>
     <EditText
         android:id="@+id/etContraseña"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Ingrese su Contraseña"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/tvContraseña"
-        app:layout_constraintTop_toTopOf="@+id/tvContraseña"
+        android:hint="Contraseña"
         android:inputType="textPassword"
-        android:layout_marginTop="8dp" />
-
+        android:layout_marginBottom="12sp"/>
     <Button
         android:id="@+id/btnCrearCuenta"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Crear Cuenta"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etContraseña"
-        android:layout_marginTop="24dp" />
-
-    <Button
-        android:id="@+id/btnRegresar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:text="Regresar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:text="Registrar"
+        android:backgroundTint="@color/design_default_color_primary_variant"/>
+</LinearLayout>
