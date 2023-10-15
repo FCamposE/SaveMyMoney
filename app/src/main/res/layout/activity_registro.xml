@@ -4,63 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blanco2"
     android:orientation="vertical"
-    android:padding="50sp"
+
     tools:context=".RegistroActivity">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Crear Cuenta"
-        android:textSize="24sp"
+        android:layout_marginBottom="30sp"
+        android:fontFamily="@font/inria_sans_bold"
         android:gravity="center"
-        android:layout_marginBottom="30sp"/>
+        android:text="Crear Cuenta"
+        android:layout_marginTop="50sp"
+        android:textSize="24sp" />
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="140dp"
-        android:src="@drawable/cheems"
-        android:adjustViewBounds="true"
         android:layout_marginBottom="30sp"
-        android:scaleType="centerInside" />
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/user" />
+
     <EditText
         android:id="@+id/etDNI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60sp"
+        android:layout_marginRight="60sp"
+        android:layout_marginBottom="12sp"
+        android:fontFamily="@font/inria_sans_light"
         android:hint="DNI"
         android:inputType="text"
-        android:layout_marginBottom="12sp"/>
+        android:textSize="15sp" />
+
     <EditText
         android:id="@+id/etNombre"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60sp"
+        android:layout_marginRight="60sp"
+        android:layout_marginBottom="12sp"
+        android:fontFamily="@font/inria_sans_light"
         android:hint="Nombre"
         android:inputType="text"
-        android:layout_marginBottom="12sp"/>
+        android:textSize="14sp" />
+
     <EditText
         android:id="@+id/etApellidos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60sp"
+        android:layout_marginRight="60sp"
+        android:layout_marginBottom="12sp"
+        android:fontFamily="@font/inria_sans_light"
         android:hint="Apellidos"
         android:inputType="text"
-        android:layout_marginBottom="12sp"/>
+        android:textSize="14sp" />
+
     <EditText
         android:id="@+id/etCorreo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60sp"
+        android:layout_marginRight="60sp"
+        android:layout_marginBottom="12sp"
+        android:fontFamily="@font/inria_sans_light"
         android:hint="Correo"
         android:inputType="text"
-        android:layout_marginBottom="12sp"/>
+        android:textSize="14sp" />
+
     <EditText
         android:id="@+id/etContraseña"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60sp"
+        android:layout_marginRight="60sp"
+        android:layout_marginBottom="12sp"
+        android:fontFamily="@font/inria_sans_light"
         android:hint="Contraseña"
         android:inputType="textPassword"
-        android:layout_marginBottom="12sp"/>
+        android:textSize="14sp" />
+
     <Button
         android:id="@+id/btnCrearCuenta"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="40sp"
+        android:layout_marginTop="20sp"
+        android:layout_marginRight="40sp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/inria_sans_bold"
         android:text="Registrar"
-        android:backgroundTint="@color/design_default_color_primary_variant"/>
+        android:textSize="16sp"
+        app:cornerRadius="8dp" />
 </LinearLayout>
