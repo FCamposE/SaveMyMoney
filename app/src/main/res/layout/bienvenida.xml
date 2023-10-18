@@ -11,28 +11,28 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginTop="108dp"
+        android:fontFamily="@font/inria_sans_bold"
         android:text="SaveMyMoney"
         android:textColor="@color/white"
-        android:fontFamily="@font/inria_sans_bold"
         android:textSize="42dp"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="80dp"
-        android:layout_marginStart="20dp"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvParagraph"
         android:layout_width="290dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="68dp"
         android:layout_marginTop="40dp"
+        android:fontFamily="@font/inria_sans_light"
         android:text="Gestiona tus gastos e ingresos de manera rápida y sencilla"
         android:textColor="@color/white"
         android:textSize="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
-        android:fontFamily="@font/inria_sans_light"/>
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
     <ImageView
         android:layout_width="250sp"
         android:layout_height="250sp"

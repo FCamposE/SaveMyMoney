@@ -12,6 +12,7 @@ import com.proyecto.android.savemymoney.adapter.GastoAdapter
 import com.proyecto.android.savemymoney.modelo.Gasto
 import com.proyecto.android.savemymoney.modelo.Usuario
 
+
 class PrincipalActivity : AppCompatActivity() {
 
     private lateinit var tvUsuario: TextView

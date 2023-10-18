@@ -7,15 +7,27 @@
     tools:context=".AgregarGastoActivity"
     android:orientation="vertical">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Agrega un nuevo gasto"
+        android:gravity="center"
+        android:textSize="20sp" />
+
     <EditText
         android:id="@+id/etTipo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="text"
-        android:hint="Tipo de gasto"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="80dp" />
+        android:hint="Tipo de gasto" />
 
     <EditText
         android:id="@+id/etPrecio"
@@ -23,19 +35,29 @@
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="numberDecimal"
-        android:hint="Precio"
-        tools:layout_editor_absoluteX="102dp"
-        tools:layout_editor_absoluteY="169dp" />
+        android:hint="Precio" />
 
-    <EditText
-        android:id="@+id/etFecha"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="datetime"
-        android:hint="Fecha"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="260dp" />
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etFecha"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:ems="10"
+            android:focusable="false"
+            android:clickable="true"
+            android:hint="Fecha"
+            android:inputType="none" />
+        <Button
+            android:id="@+id/btnSeleccionarFecha"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Seleccionar Fecha" />
+    </LinearLayout>
 
     <EditText
         android:id="@+id/etmlDescripcion"
@@ -44,17 +66,12 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:hint="Agregue la descripcion"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="343dp" />
+        android:hint="Agregue la descripcion" />
 
     <Button
         android:id="@+id/btnAgregarGasto"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Agregar Gasto"
-        tools:layout_editor_absoluteX="135dp"
-        tools:layout_editor_absoluteY="472dp" />
-
+        android:text="Agregar Gasto" />
 
 </LinearLayout>
