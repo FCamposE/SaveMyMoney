@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <group>
+    <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_item_one"
+            android:id="@+id/nav_agregar_gasto"
             android:icon="@drawable/abc_vector_test"
             android:title="Agregar Gastos" />
 
         <item
-            android:id="@+id/nav_item_two"
+            android:id="@+id/nav_agregar_ingreso"
             android:icon="@drawable/abc_vector_test"
             android:title="Agregar Ingresos" />
 
         <item
-            android:id="@+id/nav_item_three"
+            android:id="@+id/nav_dashboard"
             android:icon="@drawable/abc_vector_test"
             android:title="Dashboard" />
 
@@ -20,12 +20,12 @@
             android:title="Perfil">
             <menu>
                 <item
-                    android:id="@+id/nav_item_four"
+                    android:id="@+id/nav_configurar"
                     android:icon="@drawable/abc_vector_test"
                     android:title="Configurar Perfil" />
 
                 <item
-                    android:id="@+id/nav_item_five"
+                    android:id="@+id/nav_salir"
                     android:icon="@drawable/abc_vector_test"
                     android:title="Salir" />
             </menu>
