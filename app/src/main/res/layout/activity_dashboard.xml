@@ -4,20 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DashboardActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".DashboardActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:theme="?attr/actionBarTheme"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        app:navigationIcon="?attr/homeAsUpIndicator" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Bienvenido a su Dashborad"/>
-    <!--<ImageView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/dashborad"/>-->
-    
+        android:text="Bienvenido a su Dashboard" />
+
     <com.github.mikephil.charting.charts.PieChart
         android:id="@+id/pie_chart"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
+
 </LinearLayout>

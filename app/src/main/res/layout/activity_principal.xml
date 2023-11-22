@@ -8,69 +8,91 @@
     tools:context=".PrincipalActivity"
     android:id="@+id/dlPrincipal">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar2"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            android:layout_height="wrap_content">
 
-        <!-- Título "Gastos Ingresados" -->
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/colorPrimary"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
 
-        <!-- Título "Ingresos" -->
+            <!-- Título "Gastos Ingresados" -->
 
-        <TextView
-            android:id="@+id/tvGastosIngresados"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:text="Gastos Ingresados"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar2" />
+            <TextView
+                android:id="@+id/tvGastosIngresados"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Gastos Ingresados"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/toolbar2" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvGastos"
-            android:layout_width="409dp"
-            android:layout_height="729dp"
-            app:layout_constraintBottom_toTopOf="@id/tvIngresos"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tvGastosIngresados" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGastos"
+                android:layout_width="409dp"
+                android:layout_height="350dp"
+                app:layout_constraintBottom_toTopOf="@id/tvIngresos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvGastosIngresados" />
+
+            <TextView
+                android:id="@+id/tvIngresos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ingresos Agregados"
+                app:layout_constraintTop_toBottomOf="@id/rvGastos"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+
+                android:textSize="24sp"
 
 
-        <TextView
-            android:id="@+id/tvIngresos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ingresos"
-            app:layout_constraintTop_toBottomOf="@id/rvGastos"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginTop="16dp" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/fabAgregarGasto"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:clickable="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginBottom="40dp"
-            android:layout_marginRight="40dp"
-            android:src="@android:drawable/ic_input_add" />
+                android:layout_marginTop="16dp" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvIngresos"
+                android:layout_width="409dp"
+                android:layout_height="350dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvIngresos" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fabAgregarGasto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="40dp"
+                android:layout_marginRight="40dp"
+                android:src="@android:drawable/ic_input_add" />
+
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
     <!-- NavigationView (menú deslizable) -->
     <com.google.android.material.navigation.NavigationView
@@ -81,5 +103,6 @@
         app:menu="@menu/activity_main_drawer"
         app:headerLayout="@layout/nav_header_main">
 
-</com.google.android.material.navigation.NavigationView>
-    </androidx.drawerlayout.widget.DrawerLayout>
+    </com.google.android.material.navigation.NavigationView>
+
+</androidx.drawerlayout.widget.DrawerLayout>

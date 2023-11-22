@@ -15,19 +15,24 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
 import com.proyecto.android.savemymoney.adapter.GastoAdapter
+import com.proyecto.android.savemymoney.adapter.IngresoAdapter
 import com.proyecto.android.savemymoney.modelo.Gasto
+import com.proyecto.android.savemymoney.modelo.Ingreso
 import com.proyecto.android.savemymoney.modelo.Usuario
 
 
 class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
-
     private lateinit var tvUsuario: TextView
 
-    private lateinit var rvGasto: RecyclerView
+    private lateinit var rvGastos: RecyclerView
     private lateinit var gastos: ArrayList<Gasto>
-    private lateinit var adapterGasto: GastoAdapter
+    private lateinit var adapterGastos: GastoAdapter
     private lateinit var layoutManager: LinearLayoutManager
     private lateinit var fabAgregarGasto: FloatingActionButton
+
+    private lateinit var rvIngresos: RecyclerView
+    private lateinit var ingresos: ArrayList<Ingreso>
+    private lateinit var adapterIngresos: IngresoAdapter
 
     private lateinit var drawerPrincipal: DrawerLayout
     private lateinit var toolbar: Toolbar
@@ -45,37 +50,49 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         this.setNavigationDrawer()
 
-        if(intent.getSerializableExtra("listaGastosAgregar") != null)
-            this.gastos = intent.getSerializableExtra("listaGastosAgregar") as ArrayList<Gasto>
+        if(intent.getParcelableArrayListExtra<Ingreso>("listaIngresosAgregar") != null)
+            this.ingresos = intent.getParcelableArrayListExtra("listaIngresosAgregar") ?: arrayListOf()
+        else
+            this.llenarIngresos()
+
+        if(intent.getParcelableArrayListExtra<Gasto>("listaGastosAgregar") != null)
+            this.gastos = intent.getParcelableArrayListExtra("listaGastosAgregar") ?: arrayListOf()
         else
             this.llenarGastos()
 
         this.iniciarComponentes()
-        /*val usu = intent.getParcelableExtra<Usuario>("usuario")
-        this.tvUsuario = findViewById(R.id.tvUsuario)
-        tvUsuario.text = "Bienvenido, " + usu?.nombre*/
 
     }
-    private fun setNavigationDrawer(){
-        val toogle = ActionBarDrawerToggle(this,
+
+    private fun setNavigationDrawer() {
+        val toogle = ActionBarDrawerToggle(
+            this,
             this.drawerPrincipal,
-            this.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
+            this.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
         toogle.isDrawerIndicatorEnabled = true
         this.drawerPrincipal.addDrawerListener(toogle)
         toogle.syncState()
         this.nvPrincipal.setNavigationItemSelectedListener(this)
     }
+
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.nav_agregar_gasto -> {
                 val intent = Intent(this, AgregarGastoActivity::class.java)
                 intent.putParcelableArrayListExtra("listaGastosPrincipal", this.gastos)
                 startActivity(intent)
             }
-            R.id.nav_agregar_ingreso -> {val intent = Intent(this, AgregarIngresoActivity::class.java)
-            startActivity(intent)}
-            R.id.nav_dashboard -> {val intent = Intent(this, DashboardActivity::class.java)
-            startActivity(intent)}
+            R.id.nav_agregar_ingreso -> {
+                val intent = Intent(this, AgregarIngresoActivity::class.java)
+                intent.putParcelableArrayListExtra("listaIngresosPrincipal", this.ingresos)
+                startActivity(intent)
+            }
+            // ... otras opciones ...
+            R.id.nav_dashboard -> {
+                val intent = Intent(this, DashboardActivity::class.java)
+                startActivity(intent)
+            }
             R.id.nav_salir -> finish()
         }
         item.isChecked = true
@@ -83,29 +100,40 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         return true
     }
 
-    private fun iniciarComponentes(){
-        this.rvGasto = findViewById(R.id.rvGastos)
+    private fun iniciarComponentes() {
+        // Configuración del RecyclerView y el adaptador para Gastos
+        this.rvGastos = findViewById(R.id.rvGastos)
         this.layoutManager = LinearLayoutManager(this)
-        this.rvGasto.setHasFixedSize(true)
-        this.rvGasto.layoutManager = this.layoutManager
+        this.rvGastos.layoutManager = this.layoutManager
+        this.adapterGastos = GastoAdapter(this, this.gastos)
+        this.rvGastos.adapter = this.adapterGastos
 
-        this.adapterGasto = GastoAdapter(this,this.gastos)
-        this.rvGasto.adapter = this.adapterGasto
+        // Configuración del RecyclerView y el adaptador para Ingresos
+        this.rvIngresos = findViewById(R.id.rvIngresos)
+        this.rvIngresos.layoutManager = LinearLayoutManager(this)
+        this.adapterIngresos = IngresoAdapter(this, this.ingresos)
+        this.rvIngresos.adapter = this.adapterIngresos
 
+        // Configuración del FAB
         this.fabAgregarGasto = findViewById(R.id.fabAgregarGasto)
         this.fabAgregarGasto.setOnClickListener {
-            val intent = Intent(this,  AgregarGastoActivity::class.java)
+            val intent = Intent(this, AgregarGastoActivity::class.java)
             intent.putParcelableArrayListExtra("listaGastosPrincipal", this.gastos)
             startActivity(intent)
         }
     }
 
-    private fun llenarGastos(){
+    private fun llenarGastos() {
         this.gastos = ArrayList<Gasto>()
-        this.gastos.add(Gasto("Comida","Me comi una salchipapa", 23.5, "29/09/2023" ))
-        this.gastos.add(Gasto("Ropa","Me compre una tabas", 130.5, "29/09/2023" ))
-        this.gastos.add(Gasto("Comida","Me comi un chaufa con taper", 13.00, "29/09/2023"))
-        this.gastos.add(Gasto("Comida","Me comi un broster parte ala", 9.00, "29/09/2023"))
+        this.gastos.add(Gasto("Comida", "Me comí una salchipapa", 23.5, "29/09/2023"))
+        this.gastos.add(Gasto("Ropa", "Me compré una t-shirt", 130.5, "29/09/2023"))
+        // Agrega más gastos según sea necesario
+    }
+
+    private fun llenarIngresos() {
+        this.ingresos = ArrayList<Ingreso>()
+        this.ingresos.add(Ingreso("Salario", "Ingreso mensual", 2000.0, "29/09/2023"))
+        this.ingresos.add(Ingreso("Venta", "Venta de artículos", 500.0, "29/09/2023"))
+        // Agrega más ingresos según sea necesario
     }
 }
-
