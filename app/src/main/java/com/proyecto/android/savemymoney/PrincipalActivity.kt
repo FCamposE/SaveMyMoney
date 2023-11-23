@@ -1,12 +1,11 @@
 package com.proyecto.android.savemymoney
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -23,6 +22,7 @@ import com.proyecto.android.savemymoney.modelo.Usuario
 
 class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     private lateinit var tvUsuario: TextView
+    private lateinit var user: Usuario
 
     private lateinit var rvGastos: RecyclerView
     private lateinit var gastos: ArrayList<Gasto>
@@ -49,6 +49,11 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         setSupportActionBar(this.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         this.setNavigationDrawer()
+
+        user = intent.getParcelableExtra("usuario")!!
+
+        //user = intent.getParcelableExtra("usuario") as Usuario
+
 
         if(intent.getParcelableArrayListExtra<Ingreso>("listaIngresosAgregar") != null)
             this.ingresos = intent.getParcelableArrayListExtra("listaIngresosAgregar") ?: arrayListOf()
@@ -89,8 +94,8 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 startActivity(intent)
             }
             R.id.nav_configurar -> {
-                val intent = Intent(this, AgregarIngresoActivity::class.java)
-                intent.putParcelableArrayListExtra("listaIngresosPrincipal", this.ingresos)
+                val intent = Intent(this, PerfilActivity::class.java)
+                intent.putExtra("usuario", user)
                 startActivity(intent)
             }
             // ... otras opciones ...

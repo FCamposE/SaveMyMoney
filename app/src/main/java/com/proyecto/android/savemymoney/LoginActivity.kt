@@ -19,6 +19,8 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var usu: String
     private lateinit var pass:String
 
+    private lateinit var userData: Usuario
+
 
     private var listado: ArrayList<Usuario> = arrayListOf<Usuario>()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,6 +34,7 @@ class LoginActivity : AppCompatActivity() {
         }*/
 
         listado = intent.getSerializableExtra("listado") as ArrayList<Usuario>
+        userData = Usuario(listado[0].nombre, listado[0].apellido, listado[0].dni, listado[0].correo, listado[0].pass)
         Toast.makeText(this, "Usuario: " + listado[0].dni + " Pass: " + listado[0].pass, Toast.LENGTH_SHORT).show()
 
         this.etUsuario = findViewById(R.id.etUsuario)
@@ -56,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
                     //listaUsuarios.add(usuario)
                     val intent = Intent(this@LoginActivity, PrincipalActivity::class.java)
                     //intent.putParcelableArrayListExtra("listado", listaUsuarios)
-                    intent.putExtra("usuario", usuario)
+                    intent.putExtra("usuario", userData)
                     startActivity(intent)
                 }else{
                     Toast.makeText(this, "Datos incorectos", Toast.LENGTH_SHORT).show()
