@@ -88,6 +88,11 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 intent.putParcelableArrayListExtra("listaIngresosPrincipal", this.ingresos)
                 startActivity(intent)
             }
+            R.id.nav_configurar -> {
+                val intent = Intent(this, AgregarIngresoActivity::class.java)
+                intent.putParcelableArrayListExtra("listaIngresosPrincipal", this.ingresos)
+                startActivity(intent)
+            }
             // ... otras opciones ...
             R.id.nav_dashboard -> {
                 val intent = Intent(this, DashboardActivity::class.java)

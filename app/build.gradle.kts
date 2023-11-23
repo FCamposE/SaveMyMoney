@@ -7,12 +7,12 @@ plugins {
 
 android {
     namespace = "com.proyecto.android.savemymoney"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.proyecto.android.savemymoney"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -42,14 +42,14 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.9.0")
+    implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
-    implementation("com.google.android.material:material:1.9.0")
+    implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
 
 
-    implementation ("androidx.drawerlayout:drawerlayout:1.1.1")
-    implementation ("androidx.coordinatorlayout:coordinatorlayout:1.1.0")
+    implementation ("androidx.drawerlayout:drawerlayout:1.2.0")
+    implementation ("androidx.coordinatorlayout:coordinatorlayout:1.2.0")
 
 
     testImplementation("junit:junit:4.13.2")
@@ -57,4 +57,6 @@ dependencies {
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
+    implementation ("com.squareup.picasso:picasso:2.71828")
 }
