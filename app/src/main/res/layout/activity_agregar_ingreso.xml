@@ -6,32 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AgregarIngresoActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/crema">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tbIngresos"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        android:theme="?attr/actionBarTheme" />
+        android:theme="?attr/actionBarTheme"
+        android:backgroundTint="@color/blanco2"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Agrega un nuevo ingreso"
+        android:fontFamily="@font/inria_sans_bold"
         android:gravity="center"
-        android:textSize="24sp"
-    android:layout_marginTop="16dp"
-    android:layout_marginBottom="16dp" />
+        android:textSize="28sp"
+        android:layout_marginTop="30dp"
+         />
 
     <EditText
         android:id="@+id/etTipoIngreso"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="text"
         android:hint="Tipo de ingreso"
-        android:layout_marginBottom="16dp" />
+        android:inputType="text"
+        android:fontFamily="@font/inria_sans_light"
+        android:layout_marginStart="50sp"
+        android:layout_marginEnd="50sp"
+        android:layout_marginTop="80sp"/>
 
     <EditText
         android:id="@+id/etPrecioIngreso"
@@ -40,13 +46,16 @@
         android:ems="10"
         android:inputType="numberDecimal"
         android:hint="Precio"
-        android:layout_marginBottom="16dp" />
+        android:fontFamily="@font/inria_sans_light"
+        android:layout_marginStart="50sp"
+        android:layout_marginEnd="50sp"
+        android:layout_marginTop="5sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_marginBottom="16dp">
+        android:layout_marginTop="5sp">
 
         <EditText
             android:id="@+id/etFechaIngreso"
@@ -57,13 +66,21 @@
             android:focusable="false"
             android:clickable="true"
             android:hint="Fecha"
+            android:layout_marginStart="50sp"
+            android:layout_marginEnd="10sp"
+            android:fontFamily="@font/inria_sans_light"
             android:inputType="none" />
 
         <Button
             android:id="@+id/btnSeleccionarFechaIngreso"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Seleccionar Fecha" />
+            android:text="Seleccionar Fecha"
+            android:fontFamily="@font/inria_sans_bold"
+            android:textSize="10sp"
+            android:layout_marginEnd="50sp"
+            android:backgroundTint="@color/azul"
+            />
     </LinearLayout>
 
     <EditText
@@ -74,13 +91,22 @@
         android:gravity="start|top"
         android:inputType="textMultiLine"
         android:hint="Agregue la descripcion"
-        android:layout_marginBottom="16dp" />
+        android:fontFamily="@font/inria_sans_light"
+        android:layout_marginStart="50sp"
+        android:layout_marginEnd="50sp"
+        android:layout_marginTop="5sp"
+         />
 
     <Button
         android:id="@+id/btnAgregarIngreso"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:text="Agregar Ingreso"
-        android:layout_marginBottom="16dp" />
+        android:fontFamily="@font/inria_sans_bold"
+        android:layout_marginStart="50sp"
+        android:layout_marginEnd="50sp"
+        android:layout_marginTop="80sp"
+        app:cornerRadius="8dp"
+        android:backgroundTint="@color/black"/>
 
 </LinearLayout>
