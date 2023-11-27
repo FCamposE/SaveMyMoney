@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.proyecto.android.savemymoney.R
 import com.proyecto.android.savemymoney.modelo.Ingreso
@@ -29,7 +30,12 @@ class IngresoAdapter(val context: Context, val lista: ArrayList<Ingreso>) :
         holder.tipo!!.text = ingreso.tipo
         holder.precio!!.text = ingreso.precio.toString()
         holder.fecha!!.text = ingreso.fecha
-        holder.descripcion!!.text = ingreso.descripcion
+        //holder.descripcion!!.text = ingreso.descripcion
+        holder.v.setOnClickListener{
+            Toast.makeText(context, ingreso.descripcion, Toast.LENGTH_SHORT).show()
+        }
+
+
     }
 
     class ViewHolder(vista: View) : RecyclerView.ViewHolder(vista) {
@@ -37,6 +43,6 @@ class IngresoAdapter(val context: Context, val lista: ArrayList<Ingreso>) :
         var tipo: TextView? = v.findViewById(R.id.tvTipo)
         var precio: TextView? = v.findViewById(R.id.tvMonto)
         var fecha: TextView? = v.findViewById(R.id.tvFecha)
-        var descripcion: TextView? = v.findViewById(R.id.tvDescripcion)
+        //var descripcion: TextView? = v.findViewById(R.id.tvDescripcion)
     }
 }

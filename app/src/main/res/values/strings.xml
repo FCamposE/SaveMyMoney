@@ -3,5 +3,13 @@
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
 
+    <string-array name="categorias_spinner">
+        <item>--Elije una categoria--</item>
+        <item>Comida</item>
+        <item>Ropa</item>
+        <item>Servicio</item>
+        <item>Trabajo</item>
+    </string-array>
+
 
 </resources>

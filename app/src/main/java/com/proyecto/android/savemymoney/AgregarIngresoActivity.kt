@@ -6,8 +6,10 @@ import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -15,7 +17,6 @@ import com.proyecto.android.savemymoney.modelo.Ingreso
 
 class AgregarIngresoActivity : AppCompatActivity() {
 
-    private lateinit var etTipo: EditText
     private lateinit var etPrecio: EditText
     private lateinit var etDescripcion: EditText
     private lateinit var etFecha: EditText
@@ -23,6 +24,7 @@ class AgregarIngresoActivity : AppCompatActivity() {
     private lateinit var btnSeleccionarFecha: Button
     private var calendar: Calendar = Calendar.getInstance()
     private lateinit var ingresos: ArrayList<Ingreso>
+    private lateinit var spCategorias: Spinner
 
     @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,12 +42,20 @@ class AgregarIngresoActivity : AppCompatActivity() {
     }
 
     private fun iniciarComponentes() {
-        this.etTipo = findViewById(R.id.etTipoIngreso)
         this.etPrecio = findViewById(R.id.etPrecioIngreso)
         this.etDescripcion = findViewById(R.id.etmlDescripcionIngreso)
         this.etFecha = findViewById(R.id.etFechaIngreso)
         this.btnAgregarIngreso = findViewById(R.id.btnAgregarIngreso)
         this.btnSeleccionarFecha = findViewById(R.id.btnSeleccionarFechaIngreso)
+        this.spCategorias = findViewById(R.id.spCategoria)
+
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.categorias_spinner,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spCategorias.adapter = adapter
 
         this.btnSeleccionarFecha.setOnClickListener {
             showDatePickerDialog()
@@ -60,6 +70,11 @@ class AgregarIngresoActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+    private fun getSelectedOption(): String{
+        val pos = spCategorias.selectedItemPosition
+        return resources.getStringArray(R.array.categorias_spinner)[pos]
+    }
+
 
     private fun showDatePickerDialog() {
         val year = calendar.get(Calendar.YEAR)
@@ -81,7 +96,7 @@ class AgregarIngresoActivity : AppCompatActivity() {
 
     private fun obtenerDatosIngreso(): Ingreso {
         val ingreso = Ingreso(
-            this.etTipo.text?.toString(),
+            this.getSelectedOption(),
             this.etDescripcion.text?.toString(),
             this.etPrecio.text.toString().toDouble(),
             this.etFecha.text?.toString()

@@ -28,16 +28,13 @@
         android:layout_marginTop="30dp"
          />
 
-    <EditText
-        android:id="@+id/etTipo"
+    <Spinner
+        android:id="@+id/spCategoria"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginStart="50sp"
         android:layout_marginEnd="50sp"
         android:layout_marginTop="80sp"
-        android:ems="10"
-        android:inputType="text"
-        android:hint="Tipo de gasto"
         android:fontFamily="@font/inria_sans_light"/>
 
     <EditText
@@ -83,6 +80,7 @@
             android:backgroundTint="@color/azul"/>
     </LinearLayout>
 
+
     <EditText
         android:id="@+id/etmlDescripcion"
         android:layout_width="match_parent"
@@ -107,5 +105,7 @@
         android:layout_marginTop="80sp"
         app:cornerRadius="8dp"
         android:backgroundTint="@color/black"/>
+
+
 
 </LinearLayout>

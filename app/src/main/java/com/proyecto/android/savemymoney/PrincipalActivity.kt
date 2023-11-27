@@ -50,7 +50,7 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         this.setNavigationDrawer()
 
-        user = intent.getParcelableExtra("usuario")!!
+        //user = intent.getParcelableExtra("usuario")!!
 
         //user = intent.getParcelableExtra("usuario") as Usuario
 

@@ -27,17 +27,14 @@
         android:layout_marginTop="30dp"
          />
 
-    <EditText
-        android:id="@+id/etTipoIngreso"
+    <Spinner
+        android:id="@+id/spCategoria"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Tipo de ingreso"
-        android:inputType="text"
-        android:fontFamily="@font/inria_sans_light"
+        android:layout_height="40dp"
         android:layout_marginStart="50sp"
         android:layout_marginEnd="50sp"
-        android:layout_marginTop="80sp"/>
+        android:layout_marginTop="80sp"
+        android:fontFamily="@font/inria_sans_light"/>
 
     <EditText
         android:id="@+id/etPrecioIngreso"

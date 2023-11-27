@@ -5,8 +5,12 @@ import android.content.Intent
 import android.icu.util.Calendar
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -14,7 +18,6 @@ import com.proyecto.android.savemymoney.modelo.Gasto
 
 class AgregarGastoActivity : AppCompatActivity() {
 
-    private lateinit var etTipo: EditText
     private lateinit var etPrecio: EditText
     private lateinit var etDescripcion: EditText
     private lateinit var etFecha: EditText
@@ -22,6 +25,7 @@ class AgregarGastoActivity : AppCompatActivity() {
     private lateinit var btnSeleccionarFecha: Button
     private var calendar: Calendar = Calendar.getInstance()
     private lateinit var gastos: ArrayList<Gasto>
+    private lateinit var spCategorias: Spinner
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,12 +42,41 @@ class AgregarGastoActivity : AppCompatActivity() {
     }
 
     private fun iniciarComponentes() {
-        this.etTipo = findViewById(R.id.etTipo)
         this.etPrecio = findViewById(R.id.etPrecio)
         this.etDescripcion = findViewById(R.id.etmlDescripcion)
         this.etFecha = findViewById(R.id.etFecha)
         this.btnAgregarGasto = findViewById(R.id.btnAgregarGasto)
         this.btnSeleccionarFecha = findViewById(R.id.btnSeleccionarFecha)
+        this.spCategorias = findViewById(R.id.spCategoria)
+
+        val adapter = ArrayAdapter.createFromResource(
+            this,
+            R.array.categorias_spinner,
+            android.R.layout.simple_spinner_item
+        )
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spCategorias.adapter = adapter
+
+        spCategorias.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>, view: View, pos: Int, id: Long) {
+
+            /*when (pos) {
+                    0 -> {
+                        // Código a ejecutar cuando se selecciona la opción 1
+                    }
+                    1 -> {
+                        // Código a ejecutar cuando se selecciona la opción 2
+                    }
+                    2 -> {
+                        // Código a ejecutar cuando se selecciona la opción 3
+                    }
+                }*/
+            }
+
+            override fun onNothingSelected(parent: AdapterView<*>) {
+                // No es necesario realizar ninguna acción aquí, simplemente lo dejamos vacío
+            }
+        }
 
         this.btnSeleccionarFecha.setOnClickListener {
             showDatePickerDialog()
@@ -51,13 +84,20 @@ class AgregarGastoActivity : AppCompatActivity() {
 
         this.btnAgregarGasto.setOnClickListener {
             this.gastos.add(this.obtenerDatosGasto())
-            Toast.makeText(this, "Se agregó el nuevo gasto", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Se agregó el nuevo gasto", Toast.LENGTH_SHORT).show()
+
+            Toast.makeText(this, getSelectedOption(), Toast.LENGTH_SHORT).show()
 
             val intent = Intent(this, PrincipalActivity::class.java)
             intent.putParcelableArrayListExtra("listaGastosAgregar", this.gastos)
             startActivity(intent)
         }
     }
+    private fun getSelectedOption(): String{
+        val pos = spCategorias.selectedItemPosition
+        return resources.getStringArray(R.array.categorias_spinner)[pos]
+    }
+
 
     private fun showDatePickerDialog() {
         val year = calendar.get(Calendar.YEAR)
@@ -79,7 +119,7 @@ class AgregarGastoActivity : AppCompatActivity() {
 
     private fun obtenerDatosGasto(): Gasto {
         val gasto = Gasto(
-            this.etTipo.text?.toString(),
+            getSelectedOption(),
             this.etDescripcion.text?.toString(),
             this.etPrecio.text.toString().toDouble(),
             this.etFecha.text?.toString()
