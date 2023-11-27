@@ -1,14 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:padding="8dp" >
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="59dp"
         android:orientation="horizontal"
-        android:background="@color/blanco2">
+        android:background="@drawable/esquinas_redondeadas">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/floopa"
+            android:scaleType="centerCrop"
+            app:strokeColor="@color/black"
+            app:strokeWidth="2dp"
+            android:padding="5dp"
+            app:shapeAppearanceOverlay="@style/CircleShape"/>
 
         <TextView
             android:id="@+id/tvTipo"
@@ -18,7 +32,8 @@
             android:text="TextView"
             android:fontFamily="@font/inria_sans_light"
             android:layout_marginStart="20sp"
-            android:layout_marginTop="8sp"/>
+            android:layout_marginTop="0sp"
+            android:layout_gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/tvMonto"
@@ -27,7 +42,8 @@
             android:layout_weight="1"
             android:text="TextView"
             android:fontFamily="@font/inria_sans_light"
-            android:layout_marginTop="8sp"/>
+            android:layout_marginTop="0sp"
+            android:layout_gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/tvFecha"
@@ -36,7 +52,8 @@
             android:layout_weight="1"
             android:text="TextView"
             android:fontFamily="@font/inria_sans_light"
-            android:layout_marginTop="8sp"/>
+            android:layout_marginTop="0sp"
+            android:layout_gravity="center_vertical"/>
 
         <TextView
             android:id="@+id/tvDescripcion"
@@ -46,7 +63,8 @@
             android:text="TextView"
             android:fontFamily="@font/inria_sans_light"
             android:layout_marginEnd="20sp"
-            android:layout_marginTop="8sp"/>
+            android:layout_marginTop="0sp"
+            android:layout_gravity="center_vertical"/>
     </LinearLayout>
 
 </LinearLayout>
