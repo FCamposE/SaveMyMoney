@@ -11,5 +11,11 @@
         <item>Trabajo</item>
     </string-array>
 
+     <array name="bar_spinner">
+            <item>Enero</item>
+            <item>Febrero</item>
+            <item>Marzo</item>
+        </array>
+
 
 </resources>
