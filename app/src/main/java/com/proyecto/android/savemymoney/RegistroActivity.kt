@@ -3,9 +3,11 @@ package com.proyecto.android.savemymoney
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 import com.proyecto.android.savemymoney.modelo.Usuario
 
 class RegistroActivity : AppCompatActivity() {
@@ -24,10 +26,12 @@ class RegistroActivity : AppCompatActivity() {
     private lateinit var correo:String
     private lateinit var pass:String
     private var listaUsuarios: ArrayList<Usuario> = arrayListOf()
+
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registro)
-
         //INICIAR COMPONENTES
         this.etDNI = findViewById(R.id.etDNI)
         this.etNombres = findViewById(R.id.etNombre)
@@ -38,7 +42,7 @@ class RegistroActivity : AppCompatActivity() {
         //this.btnRegresar = findViewById(R.id.btnRegresar)
 
         //OBTENER DATOS, GUARDAR USUARIO E IR A MAIN
-        btnCrearCuenta.setOnClickListener {
+        /*btnCrearCuenta.setOnClickListener {
             this.dni = etDNI.text.toString()
             this.nombre = etNombres.text.toString()
             this.apellido = etApellidos.text.toString()
@@ -52,11 +56,41 @@ class RegistroActivity : AppCompatActivity() {
             intent.putParcelableArrayListExtra("listado", this.listaUsuarios)
             Toast.makeText(this, "Bienvenido, " + usu.nombre, Toast.LENGTH_LONG).show()
             startActivity(intent)
+        }*/
+
+        auth = FirebaseAuth.getInstance()
+        btnCrearCuenta.setOnClickListener {
+            val email = etCorreo.text.toString()
+            val password = etPass.text.toString()
+            registerUser(email,password)
         }
 
         /*btnRegresar.setOnClickListener {
             val  intent = Intent(this@RegistroActivity, LoginActivity::class.java)
             startActivity(intent)
         }*/
+    }
+    private fun registerUser(email: String, password: String) {
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Ingrese su correo y contraseña", Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    Log.d(TAG, "createUserWithEmail:success")
+                    Toast.makeText(this, "Registro completo", Toast.LENGTH_SHORT).show()
+                    startActivity(Intent(this, LoginActivity::class.java))
+                    finish()
+                } else {
+                    Log.w(TAG, "createUserWithEmail:failure", task.exception)
+                    Toast.makeText(this, "El registro falló, intente nuevamente.", Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+    companion object {
+        private const val TAG = "LoginActivity"
+        private const val RC_SIGN_IN = 9001
     }
 }

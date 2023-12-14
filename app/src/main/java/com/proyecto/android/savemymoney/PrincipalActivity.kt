@@ -3,6 +3,8 @@ package com.proyecto.android.savemymoney
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -13,11 +15,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.navigation.NavigationView
+import com.google.firebase.auth.FirebaseAuth
 import com.proyecto.android.savemymoney.adapter.GastoAdapter
 import com.proyecto.android.savemymoney.adapter.IngresoAdapter
 import com.proyecto.android.savemymoney.modelo.Gasto
 import com.proyecto.android.savemymoney.modelo.Ingreso
 import com.proyecto.android.savemymoney.modelo.Usuario
+import com.squareup.picasso.Picasso
 
 
 class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -38,6 +42,8 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
     private lateinit var toolbar: Toolbar
     private lateinit var nvPrincipal: NavigationView
 
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_principal)
@@ -49,6 +55,28 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         setSupportActionBar(this.toolbar)
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         this.setNavigationDrawer()
+
+        auth = FirebaseAuth.getInstance()
+
+        val user = auth.currentUser
+        if (user != null) {
+            val hv: View = nvPrincipal.getHeaderView(0)
+
+            val nombre_nd: TextView = hv.findViewById(R.id.nav_header_textView)
+            val correo_nd: TextView = hv.findViewById(R.id.nav_header_textView2)
+            val imagen_nd: ImageView = hv.findViewById(R.id.nav_header_imageView)
+            val profile_url: String
+
+            nombre_nd.text = user.displayName
+            correo_nd.text = user.email
+            profile_url = user.photoUrl.toString()
+
+            Picasso.get().load(profile_url).into(imagen_nd)
+
+        } else {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
 
         //user = intent.getParcelableExtra("usuario")!!
 
@@ -95,7 +123,7 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
             }
             R.id.nav_configurar -> {
                 val intent = Intent(this, PerfilActivity::class.java)
-                intent.putExtra("usuario", user)
+                //intent.putExtra("usuario", user)
                 startActivity(intent)
             }
             // ... otras opciones ...
@@ -103,7 +131,14 @@ class PrincipalActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
                 val intent = Intent(this, DashboardActivity::class.java)
                 startActivity(intent)
             }
-            R.id.nav_salir -> finish()
+            R.id.nav_dashboard2 -> {
+                val intent = Intent(this, Dashboard2Activity::class.java)
+                startActivity(intent)
+            }
+            R.id.nav_salir ->{
+                finish()
+                true
+            }
         }
         item.isChecked = true
         drawerPrincipal.closeDrawer(GravityCompat.START)

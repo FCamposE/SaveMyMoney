@@ -3,6 +3,8 @@ plugins {
     id("org.jetbrains.kotlin.android")
 
     id ("kotlin-android")
+
+    id("com.google.gms.google-services")
 }
 
 android {
@@ -59,4 +61,9 @@ dependencies {
     implementation ("com.github.PhilJay:MPAndroidChart:v3.1.0")
 
     implementation ("com.squareup.picasso:picasso:2.71828")
+
+    implementation(platform("com.google.firebase:firebase-bom:32.7.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation ("com.google.firebase:firebase-auth:20.0.3")
+    implementation ("com.google.android.gms:play-services-auth:19.0.0")
 }

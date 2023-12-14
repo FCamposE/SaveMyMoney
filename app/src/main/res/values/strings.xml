@@ -3,6 +3,8 @@
     <string name="navigation_drawer_open">open</string>
     <string name="navigation_drawer_close">close</string>
 
+    <string name="default_web_client_id">1000986254086-5bv8tf8a6cevkb539e4s3j0craafjhab.apps.googleusercontent.com</string>
+
     <string-array name="categorias_spinner">
         <item>--Elije una categoria--</item>
         <item>Comida</item>
@@ -11,11 +13,11 @@
         <item>Trabajo</item>
     </string-array>
 
-     <array name="bar_spinner">
-            <item>Enero</item>
-            <item>Febrero</item>
-            <item>Marzo</item>
-        </array>
+    <array name="bar_spinner">
+        <item>Enero</item>
+        <item>Febrero</item>
+        <item>Marzo</item>
+    </array>
 
 
 </resources>

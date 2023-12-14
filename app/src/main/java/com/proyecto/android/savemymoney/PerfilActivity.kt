@@ -1,11 +1,14 @@
 package com.proyecto.android.savemymoney
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
-import android.text.InputType
 import android.widget.EditText
+import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
+import com.google.android.material.imageview.ShapeableImageView
+import com.google.firebase.auth.FirebaseAuth
 import com.proyecto.android.savemymoney.modelo.Usuario
+import com.squareup.picasso.Picasso
 
 class PerfilActivity : AppCompatActivity() {
 
@@ -17,6 +20,8 @@ class PerfilActivity : AppCompatActivity() {
     private lateinit var etCorreoUsuario: EditText
     private lateinit var etContraseñaUsuario: EditText
 
+    private lateinit var auth: FirebaseAuth
+    private lateinit var img: ShapeableImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,7 +33,7 @@ class PerfilActivity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
 
-        user = intent.getParcelableExtra("usuario")!!
+        //user = intent.getParcelableExtra("usuario")!!
 
         initComponents()
 
@@ -40,11 +45,33 @@ class PerfilActivity : AppCompatActivity() {
 
         //this.etNombreUsuario.inputType = InputType.TYPE_CLASS_TEXT or InputType.TYPE_TEXT_FLAG_NO_SUGGESTIONS
 
-        this.etNombreUsuario.setText(user.nombre)
+        /*this.etNombreUsuario.setText(user.nombre)
         this.etApellidoUsuario.setText(user.apellido)
         this.etDniUsuario.setText(user.dni)
         this.etCorreoUsuario.setText(user.correo)
-        this.etContraseñaUsuario.setText(user.pass)
+        this.etContraseñaUsuario.setText(user.pass)*/
+
+        auth = FirebaseAuth.getInstance()
+        val user = auth.currentUser
+        if (user != null) {
+            val str = user.displayName
+            val parts = str?.split(" ")
+
+            this.etNombreUsuario.setText(parts!![0])
+            this.etApellidoUsuario.setText(parts!![1])
+            this.etDniUsuario.setText("71400830")
+            this.etCorreoUsuario.setText(user.email)
+            this.etContraseñaUsuario.setText("123456")
+
+            val profile_photo_url = user.photoUrl.toString()
+
+            Picasso.get().load(profile_photo_url).into(img)
+
+        } else {
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
+        }
+
     }
     private fun initComponents(){
         this.etNombreUsuario = findViewById(R.id.etNombreUsuario)
@@ -52,6 +79,7 @@ class PerfilActivity : AppCompatActivity() {
         this.etDniUsuario = findViewById(R.id.etDniUsuario)
         this.etCorreoUsuario = findViewById(R.id.etCorreoUsuario)
         this.etContraseñaUsuario = findViewById(R.id.etContraseñaUsuario)
+        this.img = findViewById(R.id.ivFotoUsuario)
     }
     override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
         when (item.itemId) {

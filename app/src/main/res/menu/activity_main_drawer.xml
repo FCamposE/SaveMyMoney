@@ -12,9 +12,19 @@
             android:title="Agregar Ingresos" />
 
         <item
-            android:id="@+id/nav_dashboard"
-            android:icon="@drawable/abc_vector_test"
-            android:title="Dashboard" />
+            android:title="Dashboard">
+            <menu>
+                <item
+                    android:id="@+id/nav_dashboard"
+                    android:icon="@drawable/abc_vector_test"
+                    android:title="Resumen trimestral" />
+
+                <item
+                    android:id="@+id/nav_dashboard2"
+                    android:icon="@drawable/abc_vector_test"
+                    android:title="Resumen general" />
+            </menu>
+        </item>
 
         <item
             android:title="Perfil">
